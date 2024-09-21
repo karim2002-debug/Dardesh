@@ -324,8 +324,14 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTS-eG-Ert">
                                                             <rect key="frame" x="0.0" y="15.666666666666664" width="139" height="96.333333333333343"/>
                                                             <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfc-HO-CBa">
+                                                                    <rect key="frame" x="108" y="80.333333333333329" width="26.333333333333343" height="12"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Message Text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-OP-ItB">
-                                                                    <rect key="frame" x="7" y="0.0" width="125" height="96.333333333333329"/>
+                                                                    <rect key="frame" x="7" y="0.0" width="125" height="86.333333333333329"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="jwp-bq-lbg"/>
@@ -339,7 +345,9 @@
                                                             <constraints>
                                                                 <constraint firstItem="wUf-OP-ItB" firstAttribute="leading" secondItem="nTS-eG-Ert" secondAttribute="leading" constant="7" id="03K-QP-mhh"/>
                                                                 <constraint firstAttribute="trailing" secondItem="wUf-OP-ItB" secondAttribute="trailing" constant="7" id="Aca-5g-vQn"/>
-                                                                <constraint firstAttribute="bottom" secondItem="wUf-OP-ItB" secondAttribute="bottom" id="f2j-8W-INY"/>
+                                                                <constraint firstAttribute="bottom" secondItem="gfc-HO-CBa" secondAttribute="bottom" constant="4" id="KcY-ih-RGJ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="wUf-OP-ItB" secondAttribute="bottom" constant="10" id="f2j-8W-INY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="gfc-HO-CBa" secondAttribute="trailing" constant="4.6699999999999999" id="kae-aH-8GB"/>
                                                                 <constraint firstItem="wUf-OP-ItB" firstAttribute="top" secondItem="nTS-eG-Ert" secondAttribute="top" id="oPa-RL-NsA"/>
                                                             </constraints>
                                                         </view>
@@ -357,6 +365,7 @@
                                         <connections>
                                             <outlet property="chatStack" destination="4ZZ-3o-FUM" id="2Si-iN-KWE"/>
                                             <outlet property="chatTextContainer" destination="nTS-eG-Ert" id="Xxd-Cc-shK"/>
+                                            <outlet property="currentTimeLabel" destination="gfc-HO-CBa" id="KRT-uT-W2p"/>
                                             <outlet property="messageTextView" destination="wUf-OP-ItB" id="ugO-bg-TCp"/>
                                             <outlet property="userNameLabel" destination="gc2-vY-rU7" id="Zr0-PB-5Ad"/>
                                         </connections>

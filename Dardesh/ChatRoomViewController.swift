@@ -24,6 +24,7 @@ class ChatRoomViewController: UIViewController {
         chatTableView.separatorStyle = .none
         chatTableView.allowsSelection = false
         observMessages()
+        
     }
     
     
@@ -49,8 +50,8 @@ class ChatRoomViewController: UIViewController {
         getUserNameWithId(userID: userID) { userName in
             if let userName = userName{
                 // which we will send to database (message with sender name and text)
-               
-                let dataArray : [String : Any] = ["senderName" : userName , "text" : text , "senderID" : userID ]
+                let currentTime = Date().timeIntervalSince1970
+                let dataArray : [String : Any] = ["senderName" : userName , "text" : text , "senderID" : userID , "time" : currentTime ]
                 if let roomID = self.room?.roomID {
                     let ref = Database.database().reference()
                     let room = ref.child("Rooms").child(roomID)
@@ -73,13 +74,15 @@ class ChatRoomViewController: UIViewController {
             return
         }
         let databaseRef = Database.database().reference()
-        let messages = databaseRef.child("Rooms").child(roomID).child("messages").observe(.childAdded) { snapshot in
+        let messages = databaseRef.child("Rooms").child(roomID).child("messages").observe(.childAdded) { [self] snapshot , _ in
             print(snapshot )
             if let dataArray  = snapshot.value as? [String : Any]{
-                guard let senderName = dataArray["senderName"] as? String , let messageText = dataArray["text"] as? String ,  let senderID = dataArray["senderID"] as? String else{
+                guard let senderName = dataArray["senderName"] as? String , let messageText = dataArray["text"] as? String ,  let senderID = dataArray["senderID"] as? String , let currentTime = dataArray["time"]as? Double else{
                     return
                 }
-                let message = Message(messageKey: snapshot.key , senderName: senderName,messageText: messageText , userID: senderID)
+                
+                
+                let message = Message(messageKey: snapshot.key , senderName: senderName,messageText: messageText , userID: senderID,time: currentTime)
                 self.messages.append(message)
                 self.chatTableView.reloadData()
             }

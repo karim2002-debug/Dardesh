@@ -11,4 +11,5 @@ struct Message{
     var senderName : String?
     var messageText : String? 
     var userID : String?
+    var time : Double?
 }
